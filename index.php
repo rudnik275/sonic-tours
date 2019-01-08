@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700&amp;subset=cyrillic" rel="stylesheet">
+	<?php wp_head(); ?>
+<body>
+	<header class="header">
+		<div class="header_row container">
+			<div class="header_left">
+				<div class="header_logo"></div>
+			</div>
+			<div class="header_right">
+				<div class="header_right_item with_list">
+					Экскурсии
+					<div class="header_dropdown">
+						<a class="header_dropdown_item">Tea plantation</a>
+						<a class="header_dropdown_item">Galle town</a>
+					</div>
+				</div>
+				<a class="header_right_item">Организация свадьбы</a>
+				<a class="header_right_item">Жилье</a>
+				<a class="header_right_item">Отзывы</a>
+				<a class="header_right_item">Котакты</a>
+			</div>
+		</div>
+
+		<h1 class="header_title">Sri-lanka</h1>
+		<h2 class="header_subtitle">Gid Buddika Killakulam</h2>
+	</header>
+
+	<div class="main container">
+		<div class="main_left_col">
+			<h2 class="section_title excursion_title">Экскурсии</h2>
+			<div class="excursion_list">
+				<?php
+					$excursions = get_posts(array(
+						'category' => get_category_by_slug('excursions')->cat_ID
+					));
+					foreach ($excursions as $post){ ?>
+						<a href="<?= $post->guid ?>" class="excursion_list_item">
+							<img class="excursion_list_item_photo" src="<?= get_field('image', $post->ID)['url'] ?>">
+							<div class="excursion_list_item_text">
+								<div class="excursion_list_item_text_title">
+									<?= $post->post_title ?>
+								</div>
+								<div class="excursion_list_item_text_subtitle">
+									<?= get_field('city', $post->ID) ?>
+								</div>
+							</div>
+						</a>
+					<?php }?>
+			</div>
+
+
+			<div class="section">
+				<h2 class="section_title">Отзывы</h2>
+				<div class="section_container">
+					Отзыв <br>
+					Отзыв <br>
+					Отзыв <br>
+					Отзыв <br>
+					Отзыв <br>
+					Отзыв <br>
+					Отзыв <br>
+					Отзыв <br>
+					Отзыв <br>
+					Отзыв <br>
+				</div>
+			</div>
+			<div class="section">
+				<h2 class="section_title">Организация свадеб</h2>
+				<div class="section_container">
+					<div class="section_slider_container" id="wedding_slider">
+						<div class="section_slider">
+							<div class="section_slider_item"><img src="https://via.placeholder.com/500"></div>
+							<div class="section_slider_item"><img src="https://via.placeholder.com/500"></div>
+						</div>
+					</div>
+					<div class="section_content">
+						<ul class="section_list">
+							<li>Трансфер</li>
+							<li>Фотограф</li>
+							<li>Феерверк</li>
+							<li>Слон</li>
+							<li>Костюмы</li>
+						</ul>
+						<span class="section_text">
+							Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Первую назад диких деревни предупреждал проектах путь, заголовок обеспечивает продолжил большого маленькая сих, необходимыми рукописи языкового языком домах дороге коварных собрал семь взобравшись. Все рыбного буквоград то, страна переписали вершину, послушавшись пояс там рот они, семантика лучше текст приставка свою?
+						</span>
+						<button class="section_btn btn">Заказать</button>
+					</div>
+				</div>
+			</div>
+		
+			<div class="section">
+				<h2 class="section_title">Жилье</h2>
+				<div class="section_container">
+					<div class="section_slider_container" id="villa_slider">
+						<div class="section_slider">
+							<div class="section_slider_item"><img src="https://via.placeholder.com/500"></div>
+							<div class="section_slider_item"><img src="https://via.placeholder.com/500"></div>
+							<div class="section_slider_item"><img src="https://via.placeholder.com/500"></div>
+						</div>
+					</div>
+					<div class="section_content">
+						<ul class="section_list">
+							<li>Близко к океану</li>
+							<li>Горячая вода</li>
+							<li>Чай</li>
+							<li>Уборка</li>
+						</ul>
+						<span class="section_text">
+							Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Первую назад диких деревни предупреждал проектах путь, заголовок обеспечивает продолжил большого маленькая сих, необходимыми рукописи языкового языком домах дороге коварных собрал семь взобравшись. Все рыбного буквоград то, страна переписали вершину, послушавшись пояс там рот они, семантика лучше текст приставка свою?
+						</span>
+						<button class="section_btn btn">Заказать</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="main_right_col">
+			<div class="about_me">
+				<h2 class="section_title">Обо мне</h2>
+				<div class="about_me_container">
+					<img class="about_me_photo" src="<?= get_page_by_title('avatar', OBJECT, 'attachment')->guid ?>">
+					<div class="about_me_text">Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Первую назад диких деревни предупреждал проектах путь, заголовок обеспечивает продолжил большого маленькая сих, необходимыми рукописи языкового языком домах дороге коварных собрал семь взобравшись. Все рыбного буквоград то, страна переписали вершину, послушавшись пояс там рот они, семантика лучше текст приставка свою?</div>
+					<div class="about_me_socials">
+						<a href="#" class="about_me_social instagram"></a>
+						<a href="#" class="about_me_social viber"></a>
+						<a href="#" class="about_me_social telegram"></a>
+						<a href="#" class="about_me_social facebook"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="contact_form container">
+		<h2 class="section_title">Ask question to me</h2>
+		<div class="contact_form_container">
+			<div class="contact_form_col_left">
+				<textarea cols="30" rows="10" placeholder="Your question" class="contact_form_textarea"></textarea>
+			</div>
+			<div class="contact_form_col_right">
+				<input type="text" class="contact_form_input" placeholder="Name">
+				<input type="text" class="contact_form_input" placeholder="Phone or e-mail">
+				<button class="contact_form_btn btn">Отправить</button>
+			</div>
+		</div>
+	</div>
+
+
+	<footer class="footer">
+		<div class="footer_social_container container">
+			<a href="#" class="footer_social instagram"></a>
+			<a href="#" class="footer_social viber"></a>
+			<a href="#" class="footer_social telegram"></a>
+			<a href="#" class="footer_social facebook"></a>
+		</div>
+	</footer>
+
+	<?php wp_footer(); ?>
+</body>
+</html>
