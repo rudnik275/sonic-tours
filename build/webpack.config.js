@@ -69,7 +69,7 @@ module.exports = env => {
         test: /\.(png|jpe?g|gif)(\?.*)?$/,
         loader: 'file-loader',
         options: {
-          name: '../img/[name].[ext]'
+          name: './img/[name].[ext]'
         }
       }]
     },

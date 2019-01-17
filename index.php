@@ -5,6 +5,8 @@
 	<title>Document</title>
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700&amp;subset=cyrillic" rel="stylesheet">
 	<?php wp_head(); ?>
+</head>
+
 <body>
 	<header class="header">
 		<div class="header_row container">
@@ -13,46 +15,60 @@
 			</div>
 			<div class="header_right">
 				<div class="header_right_item with_list">
-					Экскурсии
+					Excursion
 					<div class="header_dropdown">
-						<a class="header_dropdown_item">Tea plantation</a>
-						<a class="header_dropdown_item">Galle town</a>
+						<?php
+						$excursions = get_posts(array(
+							'category' => get_category_by_slug('excursions')->cat_ID
+						));
+						foreach ($excursions as $post){ ?>
+							<a href="<?= $post->guid ?>" class="header_dropdown_item">
+								<?= $post->post_title ?>							
+							</a>
+						<?php }?>
+						
 					</div>
 				</div>
-				<a class="header_right_item">Организация свадьбы</a>
-				<a class="header_right_item">Жилье</a>
-				<a class="header_right_item">Отзывы</a>
-				<a class="header_right_item">Котакты</a>
+				<?php
+				$services = get_posts(array(
+					'category' => get_category_by_slug('services')->cat_ID
+				));
+				foreach ($services as $post){ ?>
+					<a href="<?= $post->guid ?>" class="header_right_item">
+						<?= $post->post_title ?>							
+					</a>
+				<?php }?>
+				<a class="header_right_item">Reviews</a>
+				<a class="header_right_item">Contacts</a>
 			</div>
 		</div>
 
 		<h1 class="header_title">Sri-lanka</h1>
-		<h2 class="header_subtitle">Gid Buddika Killakulam</h2>
+		<h2 class="header_subtitle">Cicerone Buddika Killakulam</h2>
 	</header>
 
 	<div class="main container">
 		<div class="main_left_col">
-			<h2 class="section_title excursion_title">Экскурсии</h2>
+			<h2 class="section_title excursion_title">Excursion</h2>
 			<div class="excursion_list">
 				<?php
-					$excursions = get_posts(array(
-						'category' => get_category_by_slug('excursions')->cat_ID
-					));
-					foreach ($excursions as $post){ ?>
-						<a href="<?= $post->guid ?>" class="excursion_list_item">
-							<img class="excursion_list_item_photo" src="<?= get_field('image', $post->ID)['url'] ?>">
-							<div class="excursion_list_item_text">
-								<div class="excursion_list_item_text_title">
-									<?= $post->post_title ?>
-								</div>
-								<div class="excursion_list_item_text_subtitle">
-									<?= get_field('city', $post->ID) ?>
-								</div>
+				$excursions = get_posts(array(
+					'category' => get_category_by_slug('excursions')->cat_ID
+				));
+				foreach ($excursions as $post){ ?>
+					<a href="<?= $post->guid ?>" class="excursion_list_item">
+						<img class="excursion_list_item_photo" src="<?= get_field('image', $post->ID)['url'] ?>">
+						<div class="excursion_list_item_text">
+							<div class="excursion_list_item_text_title">
+								<?= $post->post_title ?>
 							</div>
-						</a>
-					<?php }?>
+							<div class="excursion_list_item_text_subtitle">
+								<?= get_field('city', $post->ID) ?>
+							</div>
+						</div>
+					</a>
+				<?php }?>
 			</div>
-
 
 			<div class="section">
 				<h2 class="section_title">Отзывы</h2>
@@ -69,63 +85,46 @@
 					Отзыв <br>
 				</div>
 			</div>
-			<div class="section">
-				<h2 class="section_title">Организация свадеб</h2>
-				<div class="section_container">
-					<div class="section_slider_container" id="wedding_slider">
-						<div class="section_slider">
-							<div class="section_slider_item"><img src="https://via.placeholder.com/500"></div>
-							<div class="section_slider_item"><img src="https://via.placeholder.com/500"></div>
+
+			<?php
+				$services = get_posts(array(
+					'category' => get_category_by_slug('services')->cat_ID
+				));
+				foreach ($services as $post){ ?>
+				<div class="section">
+					<h2 class="section_title"><?= $post->post_title ?></h2>
+					<div class="section_container">
+						<div class="section_slider_container" id="slider_<?= $post->ID ?>">
+							<div class="section_slider">
+								<?php foreach(get_field('image_galery', $post->ID) as $image){?>
+									<div class="section_slider_item"><img src="<?= $image['url'] ?>"></div>
+								<?php }?>
+							</div>
+						</div>
+						<div class="section_content">
+							<ul class="section_list">
+								<?php foreach(get_field('features', $post->ID) as $feature){?>
+								<li><?= $feature['text'] ?></li>
+								<?php }?>
+							</ul>
+							<span class="section_text"><?= get_field('description', $post->ID) ?></span>
+							<button class="section_btn btn">Заказать</button>
 						</div>
 					</div>
-					<div class="section_content">
-						<ul class="section_list">
-							<li>Трансфер</li>
-							<li>Фотограф</li>
-							<li>Феерверк</li>
-							<li>Слон</li>
-							<li>Костюмы</li>
-						</ul>
-						<span class="section_text">
-							Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Первую назад диких деревни предупреждал проектах путь, заголовок обеспечивает продолжил большого маленькая сих, необходимыми рукописи языкового языком домах дороге коварных собрал семь взобравшись. Все рыбного буквоград то, страна переписали вершину, послушавшись пояс там рот они, семантика лучше текст приставка свою?
-						</span>
-						<button class="section_btn btn">Заказать</button>
-					</div>
 				</div>
-			</div>
-		
-			<div class="section">
-				<h2 class="section_title">Жилье</h2>
-				<div class="section_container">
-					<div class="section_slider_container" id="villa_slider">
-						<div class="section_slider">
-							<div class="section_slider_item"><img src="https://via.placeholder.com/500"></div>
-							<div class="section_slider_item"><img src="https://via.placeholder.com/500"></div>
-							<div class="section_slider_item"><img src="https://via.placeholder.com/500"></div>
-						</div>
-					</div>
-					<div class="section_content">
-						<ul class="section_list">
-							<li>Близко к океану</li>
-							<li>Горячая вода</li>
-							<li>Чай</li>
-							<li>Уборка</li>
-						</ul>
-						<span class="section_text">
-							Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Первую назад диких деревни предупреждал проектах путь, заголовок обеспечивает продолжил большого маленькая сих, необходимыми рукописи языкового языком домах дороге коварных собрал семь взобравшись. Все рыбного буквоград то, страна переписали вершину, послушавшись пояс там рот они, семантика лучше текст приставка свою?
-						</span>
-						<button class="section_btn btn">Заказать</button>
-					</div>
-				</div>
-			</div>
+			<?php }?>
+
 		</div>
 		
+		<?php $contacts = get_page_by_title('contacts')?>
 		<div class="main_right_col">
 			<div class="about_me">
-				<h2 class="section_title">Обо мне</h2>
+				<h2 class="section_title">About me</h2>
 				<div class="about_me_container">
-					<img class="about_me_photo" src="<?= get_page_by_title('avatar', OBJECT, 'attachment')->guid ?>">
-					<div class="about_me_text">Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Первую назад диких деревни предупреждал проектах путь, заголовок обеспечивает продолжил большого маленькая сих, необходимыми рукописи языкового языком домах дороге коварных собрал семь взобравшись. Все рыбного буквоград то, страна переписали вершину, послушавшись пояс там рот они, семантика лучше текст приставка свою?</div>
+					<img class="about_me_photo" src="<?= get_field('avatar', $contacts->ID)['url'] ?>">
+					<div class="about_me_text">
+						<?= get_field('about_me', $contacts->ID) ?>
+					</div>
 					<div class="about_me_socials">
 						<a href="#" class="about_me_social instagram"></a>
 						<a href="#" class="about_me_social viber"></a>
