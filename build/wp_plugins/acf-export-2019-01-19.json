@@ -9,7 +9,7 @@
                 "name": "about_me",
                 "type": "textarea",
                 "instructions": "",
-                "required": 0,
+                "required": 1,
                 "conditional_logic": 0,
                 "wrapper": {
                     "width": "",
@@ -24,7 +24,7 @@
             },
             {
                 "key": "field_5c3fd6cca11fd",
-                "label": "avatar",
+                "label": "Avatar",
                 "name": "avatar",
                 "type": "image",
                 "instructions": "",
@@ -90,8 +90,8 @@
             },
             {
                 "key": "field_5c3fb60abe631",
-                "label": "image",
-                "name": "image",
+                "label": "Preview image",
+                "name": "preview_image",
                 "type": "image",
                 "instructions": "",
                 "required": 1,
@@ -111,6 +111,90 @@
                 "max_height": "",
                 "max_size": "",
                 "mime_types": ""
+            },
+            {
+                "key": "field_5c42fe5a52710",
+                "label": "Description",
+                "name": "description",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": "",
+                "new_lines": ""
+            },
+            {
+                "key": "field_5c4301b0ca1a9",
+                "label": "Photos",
+                "name": "photos",
+                "type": "gallery",
+                "instructions": "It is recommended to use photos of the same size",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "min": "",
+                "max": "",
+                "insert": "append",
+                "library": "all",
+                "min_width": 1000,
+                "min_height": 600,
+                "min_size": "",
+                "max_width": 1000,
+                "max_height": 600,
+                "max_size": "",
+                "mime_types": ""
+            },
+            {
+                "key": "field_5c4301d14be2e",
+                "label": "Duration",
+                "name": "duration",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5c4301fc3c82b",
+                "label": "Price",
+                "name": "price",
+                "type": "number",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "min": 0,
+                "max": "",
+                "step": 1
             }
         ],
         "location": [
@@ -137,10 +221,10 @@
         "fields": [
             {
                 "key": "field_5c3fb85466b4b",
-                "label": "image_galery",
-                "name": "image_galery",
+                "label": "Photos",
+                "name": "photos",
                 "type": "gallery",
-                "instructions": "",
+                "instructions": "It is recommended to use photos of the same size",
                 "required": 1,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -162,7 +246,7 @@
             },
             {
                 "key": "field_5c3fbea8aa1f8",
-                "label": "features",
+                "label": "Features",
                 "name": "features",
                 "type": "repeater",
                 "instructions": "",
@@ -202,7 +286,7 @@
             },
             {
                 "key": "field_5c3fce6208dca",
-                "label": "description",
+                "label": "Description",
                 "name": "description",
                 "type": "textarea",
                 "instructions": "",

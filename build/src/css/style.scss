@@ -39,10 +39,11 @@ input, textarea, button{
 
 .header{
 	height: 400px;
-	background: linear-gradient(90deg, rgba($blue, 0.8), rgba($purple, 0.8)), url('../img/main-bg.jpg');
+	background: linear-gradient(90deg, rgba($blue, 0.4), rgba($purple, 0.4)), url('../img/main-bg.jpg');
 }
 
 .header_logo{
+	display: block;
 	width: 160px;
 	height: 55px;
 	background: url('../img/logo.png');
@@ -150,6 +151,7 @@ a.header_right_item{
 	letter-spacing: 1.3px;
 	text-transform: uppercase;
 	text-align: center;
+	text-decoration: none;
 }
 
 .footer{
@@ -280,13 +282,14 @@ a.header_right_item{
 .single .section_slider_container{
 	min-width: 400px;
 	width: auto;
+	max-width: 1100px;
 }
 
 .section_slider_item{
 	display: block;
 
 	img{
-		max-width: 100%;
+		width: 100%;
 		display: block;
 		margin: auto;
 	}
@@ -484,6 +487,10 @@ a.header_right_item{
 	padding-left: 8px;
 }
 
+.single_list_item_text_feature{
+	margin-top: 8px;
+}
+
 .single_list_item_lebel{
 	&:after{
 		content: ':';
@@ -494,4 +501,5 @@ a.header_right_item{
 	padding: 20px;
 	font-size: 20px;
 	line-height: 1.2;
+  white-space: pre-line;
 }
