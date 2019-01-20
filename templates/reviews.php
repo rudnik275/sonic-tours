@@ -1,6 +1,8 @@
 <?php 
 $comments = get_comments(array(
 	'status' => 'approve',
+	'order'  	=> 'DESC',
+	'orderBy' => 'comment_date',
 ));
 $reviews = get_page_by_title('reviews');
 ?>

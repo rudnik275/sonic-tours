@@ -5,8 +5,10 @@ $excursions = get_posts(array(
 
 $available_comments_count = 3;
 $comments = get_comments(array(
-	'status' => 'approve',
-	'number'  => $available_comments_count 
+	'status' 	=> 'approve',
+	'number' 	=> $available_comments_count,
+	'order'  	=> 'DESC',
+	'orderBy' => 'comment_date',
 ));
 
 $comments_count = get_comments(array(
@@ -23,7 +25,7 @@ $reviews = get_page_by_title('reviews');
 
 <div class="main container">
 	<div class="main_left_col">
-		<h2 class="section_title excursion_title">Excursion</h2>
+		<h2 class="section_title excursion_title">Excursions</h2>
 		<div class="excursion_list">
 			<?php foreach ($excursions as $post) : ?>
 				<a href="<?= $post->guid ?>" class="excursion_list_item">
