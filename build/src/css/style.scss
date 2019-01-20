@@ -11,6 +11,15 @@ $black: #4e4e4e;
 	color: $black;
 }
 
+.clear_fix{
+	&:after,
+	&:before{
+		content: '';
+		display: block;
+		clear: both;
+	}
+}
+
 body{
 	background: $bg;
 	@extend %font;
@@ -502,4 +511,53 @@ a.header_right_item{
 	font-size: 20px;
 	line-height: 1.2;
   white-space: pre-line;
+}
+
+.contacts{
+	display: flex;
+	align-items: flex-start;
+}
+
+.contacts_left{
+	padding: 20px;
+  font-size: 20px;
+  line-height: 1.2;
+  white-space: pre-line;
+  background: #fff;
+  box-shadow: 0 0 8px 1px #e8e8e8;
+  width: 80%;
+
+  @extend .clear_fix;
+
+	img{
+		float: left;
+		margin-right: 12px;
+		margin-bottom: 12px;
+		max-width: 300px;
+	}
+}
+
+.contacts_right{
+	padding-left: 20px;
+	width: 20%;
+}
+
+.contacts_right_title{
+	font-size: 26px;
+  padding-bottom: 16px;
+  font-weight: 300;
+  color: #929292;
+}
+
+.contacts_right_text{
+  padding-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  color: $purple;
+  display: block;
+  text-decoration: none;
+}
+
+.about_me_btn{
+	margin-top: 16px;
 }

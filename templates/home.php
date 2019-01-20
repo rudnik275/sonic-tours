@@ -1,3 +1,6 @@
+<?php 
+wp_mail( 'monawelo@braun4email.com', 'subject', 'test' );
+ ?>
 <div class="main container">
 	<div class="main_left_col">
 		<h2 class="section_title excursion_title">Excursion</h2>
@@ -24,16 +27,20 @@
 		<div class="section">
 			<h2 class="section_title">Отзывы</h2>
 			<div class="section_container">
-				Отзыв <br>
-				Отзыв <br>
-				Отзыв <br>
-				Отзыв <br>
-				Отзыв <br>
-				Отзыв <br>
-				Отзыв <br>
-				Отзыв <br>
-				Отзыв <br>
-				Отзыв <br>
+				<!-- <?php foreach (get_comments() as $comment): ?>
+					<pre><?= get_field('ratio', $comment) ?></pre>
+					<pre><?php print_r($comment->comment_author) ?></pre>
+					<br>
+					<br>
+
+				<?php endforeach ?> -->
+				<form action="<?= get_template_directory_uri() . '/add-comment.php' ?>" onsubmit="sendComment(event)">
+					<input type="file" multiple name="photos">
+					<input required type="text" name="author" value="dimka">
+					<input required type="text" name="text" value="ads dsa sd sd">
+					<input type="range" name="ratio" value="3" min="0" max="5">
+					<button type="submit">Send</button>
+				</form>
 			</div>
 		</div>
 
@@ -74,7 +81,10 @@
 			<div class="about_me_container">
 				<img class="about_me_photo" src="<?= get_field('avatar', $contacts->ID)['url'] ?>">
 				<div class="about_me_text">
-					<?= get_field('about_me', $contacts->ID) ?>
+					<?= do_excerpt(get_field('about_me', $contacts->ID), 50) ?>
+					<a href="<?= get_page_by_title('contacts')->guid ?>" class="btn about_me_btn">
+						Show more
+					</a>
 				</div>
 				<div class="about_me_socials">
 					<a href="#" class="about_me_social instagram"></a>

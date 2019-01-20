@@ -1,4 +1,5 @@
 import Siema from 'siema'
+import axios from 'axios'
 
 const sliders = []
 document.querySelectorAll('.section_slider_container').forEach(s => {
@@ -62,4 +63,30 @@ for (const sliderID of sliders){
 			slider.next()
 		}
 	}, 6000)
+}
+
+window.sendComment = function (e){
+	e.preventDefault()
+	const form = e.target
+	const url = form.action
+	const data = new FormData(form)
+	const config = {
+    headers: { 'content-type': 'multipart/form-data' }
+  }
+  
+  const photos = data.getAll('photos')
+  let i = 0
+  for (const photo of photos){
+  	data.append('image'+i, photo, photo.name)
+  	i++
+  }
+	data.delete('photos')
+
+	axios.post(url, data, config)
+	  .then(({data}) => {
+	    console.log(data)
+	  })
+	  .catch(error => {
+	    console.log(error)
+	  })
 }

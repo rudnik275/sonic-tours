@@ -29,6 +29,7 @@
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "raw-loader": "^1.0.0",
     "siema": "^1.5.1"
   }

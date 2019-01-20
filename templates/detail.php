@@ -35,12 +35,11 @@ $isExcursions = $category === 'excursions';
 			</div>
 		</div>
 		<div class="single_right">
-			<div class="section_slider_container" id="villa_slider">
+			<div class="section_slider_container" id="slider_<?php the_ID() ?>">
 				<div class="section_slider">
 					<?php foreach($photos as $photo) : ?>
 						<div class="section_slider_item">
 							<img src="<?= $photo['url']?>">
-							<!-- <img src="https://via.placeholder.com/1000x600"> -->
 						</div>
 					<?php endforeach; ?>
 				</div>

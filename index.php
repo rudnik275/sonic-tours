@@ -1,3 +1,7 @@
+<?php 
+$contact_page = get_page_by_title('contacts');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +19,7 @@
 			</div>
 			<div class="header_right">
 				<div class="header_right_item with_list">
-					Excursion
+					Excursions
 					<div class="header_dropdown">
 						<?php
 						$excursions = get_posts(array(
@@ -38,8 +42,8 @@
 						<?= $post->post_title ?>							
 					</a>
 				<?php endforeach;?>
-				<a class="header_right_item">Reviews</a>
-				<a class="header_right_item">Contacts</a>
+				<!-- <a class="header_right_item">Reviews</a> -->
+				<a href="<?= $contact_page->guid ?>" class="header_right_item"><?= $contact_page->post_title ?></a>
 			</div>
 		</div>
 
@@ -49,11 +53,21 @@
 	
 	<?php 
 	if (is_home()) :
+		
 		get_template_part('templates/home');
+
+	elseif(is_page('contacts') ):
+
+		while ( have_posts() ) : the_post(); 
+			get_template_part('templates/contacts');
+		endwhile;
+
 	else : 
+
 		while ( have_posts() ) : the_post(); 
 	  	get_template_part('templates/detail');
 		endwhile;
+
 	endif; 
 	?>
 
