@@ -1,15 +1,22 @@
 <?php 
-wp_mail( 'monawelo@braun4email.com', 'subject', 'test' );
- ?>
+print_r(date("Y-m-d H:i:s"));
+$excursions = get_posts(array(
+	'category' => get_category_by_slug('excursions')->cat_ID
+));
+$comments = get_comments(array(
+	'status' => 'approve',
+	'number'  => 2
+));
+$services = get_posts(array(
+	'category' => get_category_by_slug('services')->cat_ID
+));
+?>
+
 <div class="main container">
 	<div class="main_left_col">
 		<h2 class="section_title excursion_title">Excursion</h2>
 		<div class="excursion_list">
-			<?php
-			$excursions = get_posts(array(
-				'category' => get_category_by_slug('excursions')->cat_ID
-			));
-			foreach ($excursions as $post) : ?>
+			<?php foreach ($excursions as $post) : ?>
 				<a href="<?= $post->guid ?>" class="excursion_list_item">
 					<img class="excursion_list_item_photo" src="<?= get_field('preview_image')['sizes']['thumbnail'] ?>">
 					<div class="excursion_list_item_text">
@@ -27,28 +34,16 @@ wp_mail( 'monawelo@braun4email.com', 'subject', 'test' );
 		<div class="section">
 			<h2 class="section_title">Отзывы</h2>
 			<div class="section_container">
-				<!-- <?php foreach (get_comments() as $comment): ?>
-					<pre><?= get_field('ratio', $comment) ?></pre>
-					<pre><?php print_r($comment->comment_author) ?></pre>
-					<br>
-					<br>
-
-				<?php endforeach ?> -->
-				<form action="<?= get_template_directory_uri() . '/add-comment.php' ?>" onsubmit="sendComment(event)">
-					<input type="file" multiple name="photos">
-					<input required type="text" name="author" value="dimka">
-					<input required type="text" name="text" value="ads dsa sd sd">
-					<input type="range" name="ratio" value="3" min="0" max="5">
-					<button type="submit">Send</button>
-				</form>
+				<?php foreach ($comments as $comment): ?>
+					<!-- <pre><?= get_field('ratio', $comment) ?></pre> -->
+					<!-- <pre><?php print_r($comment->comment_author) ?></pre> -->
+					<pre><?php print_r($comment) ?></pre>
+				<?php endforeach ?>
+					<button class="btn add_comment_btn">add comment</button>
 			</div>
 		</div>
 
-		<?php
-			$services = get_posts(array(
-				'category' => get_category_by_slug('services')->cat_ID
-			));
-			foreach ($services as $post) : ?>
+		<?php foreach ($services as $post) : ?>
 			<div class="section">
 				<h2 class="section_title"><?= $post->post_title ?></h2>
 				<div class="section_container">

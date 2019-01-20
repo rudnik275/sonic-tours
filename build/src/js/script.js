@@ -65,6 +65,44 @@ for (const sliderID of sliders){
 	}, 6000)
 }
 
+
+const addCommentBtns = document.querySelectorAll('.add_comment_btn')
+const commentPopupCloseBtns = document.querySelectorAll('.comment_popup_close')
+const commentPopup = document.getElementById('comment_popup_form')
+const commentPopupSuccessBtn = document.getElementById('comment_popup_success_btn')
+const commentPopupSuccess = document.getElementById('comment_popup_success')
+
+function commentPopupVisibility(state){
+	if (state){
+		commentPopup.classList.remove('hidden')
+	} else {
+		commentPopup.classList.add('hidden')
+	}
+}
+
+addCommentBtns.forEach(el => {
+	el.addEventListener('click', () => {
+		commentPopupVisibility(true)
+	})
+})
+
+commentPopupCloseBtns.forEach(el => {
+	el.addEventListener('click', () => {
+		commentPopupVisibility(false)
+	})
+})
+
+commentPopupSuccessBtn.addEventListener('click', () => {
+	commentPopupSuccess.classList.add('hidden')
+})
+
+commentPopup.addEventListener('click', (e) => {
+	const isPopup = e.target.closest('.comment_popup')
+	if (!isPopup){
+		commentPopupVisibility(false)
+	}
+})
+
 window.sendComment = function (e){
 	e.preventDefault()
 	const form = e.target
@@ -77,14 +115,19 @@ window.sendComment = function (e){
   const photos = data.getAll('photos')
   let i = 0
   for (const photo of photos){
-  	data.append('image'+i, photo, photo.name)
-  	i++
+  	if (photo.size !== 0){
+	  	data.append('image'+i, photo, photo.name)
+	  	i++
+  	}
   }
 	data.delete('photos')
 
 	axios.post(url, data, config)
 	  .then(({data}) => {
-	    console.log(data)
+	  	commentPopupVisibility(false)
+	  	form.reset()
+	    document.getElementById('comment_popup_response').innerHTML = data
+	    commentPopupSuccess.classList.remove('hidden')
 	  })
 	  .catch(error => {
 	    console.log(error)

@@ -9,7 +9,7 @@ $comment_data = array(
 	'comment_content'      => $_POST['text'],
 	'comment_type'         => '',
 	'comment_parent'       => 0,
-	'comment_date'         => null, 
+	'comment_date'         => date("Y-m-d H:i:s"), 
 );
 
 $ID = wp_insert_comment( wp_slash($comment_data) );
