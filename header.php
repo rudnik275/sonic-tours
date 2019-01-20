@@ -1,3 +1,8 @@
+<?php 
+$contact_page = get_page_by_title('contacts');
+$reviews = get_page_by_title('reviews');
+?>
+
 <header class="header">
 	<div class="header_row container">
 		<div class="header_left">
@@ -28,7 +33,7 @@
 					<?= $post->post_title ?>							
 				</a>
 			<?php endforeach;?>
-			<!-- <a class="header_right_item">Reviews</a> -->
+			<a href="<?= $reviews->guid ?>" class="header_right_item"><?= $reviews->post_title ?></a>
 			<a href="<?= $contact_page->guid ?>" class="header_right_item"><?= $contact_page->post_title ?></a>
 		</div>
 	</div>

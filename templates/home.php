@@ -1,15 +1,24 @@
 <?php 
-print_r(date("Y-m-d H:i:s"));
 $excursions = get_posts(array(
 	'category' => get_category_by_slug('excursions')->cat_ID
 ));
+
+$available_comments_count = 3;
 $comments = get_comments(array(
 	'status' => 'approve',
-	'number'  => 2
+	'number'  => $available_comments_count 
 ));
+
+$comments_count = get_comments(array(
+	'status' => 'approve',
+	'count'  => true
+));
+
 $services = get_posts(array(
 	'category' => get_category_by_slug('services')->cat_ID
 ));
+
+$reviews = get_page_by_title('reviews');
 ?>
 
 <div class="main container">
@@ -31,16 +40,48 @@ $services = get_posts(array(
 			<?php endforeach;?>
 		</div>
 
-		<div class="section">
-			<h2 class="section_title">Отзывы</h2>
-			<div class="section_container">
-				<?php foreach ($comments as $comment): ?>
-					<!-- <pre><?= get_field('ratio', $comment) ?></pre> -->
-					<!-- <pre><?php print_r($comment->comment_author) ?></pre> -->
-					<pre><?php print_r($comment) ?></pre>
-				<?php endforeach ?>
-					<button class="btn add_comment_btn">add comment</button>
+		<div class="reviews">
+			<div class="reviews_header">
+				<h2 class="section_title">
+					<?= $reviews->post_title ?> 
+					<span class="reviews_header_count">
+						(<?= $available_comments_count ?> of <?= $comments_count ?>)
+					</span>
+				</h2>
+				<a class="reviews_header_link" href="<?= $reviews->guid ?>">Show all</a>
+				<button class="btn add_comment_btn">add new comment</button>
 			</div>
+			
+			<?php foreach ($comments as $comment): ?>
+				<div class="reviews_item">
+					<div class="reviews_item_header">
+						<div class="reviews_item_author"><?= $comment->comment_author ?></div>
+						<div class="reviews_item_ratio">
+							<?php foreach (range(1,5) as $value): ?>
+								<?php if ($value < get_field('ratio', $comment)): ?>
+									<div class="star filled"></div>
+								<?php else : ?>
+									<div class="star"></div>
+								<?php endif ?>
+							<?php endforeach ?>
+						</div>
+						<div class="reviews_item_date"><?= $comment->comment_date ?></div>
+					</div>
+					<div class="reviews_item_text">
+						<?= $comment->comment_content ?>
+					</div>
+					<?php 
+						$photos = get_field('photos', $comment);
+						if (!empty($photos)): 
+					?>
+						<div class="reviews_photos">
+							<?php foreach ($photos as $photo) : ?>
+								<img src="<?= $photo['url'] ?>" data-big="<?= $photo['url'] ?>">
+							<?php endforeach; ?>
+						</div>
+					<?php endif ?>
+				</div>
+			<?php endforeach ?>
 		</div>
 
 		<?php foreach ($services as $post) : ?>

@@ -133,3 +133,29 @@ window.sendComment = function (e){
 	    console.log(error)
 	  })
 }
+
+const reviewImages = document.querySelectorAll('.reviews_photos img')
+reviewImages.forEach(img => {
+	img.addEventListener('click', () => {
+		const src = img.getAttribute('data-big')
+		showReviewImagePopup(src)
+	})
+})
+
+const reviewsImagePopup = document.getElementById('reviews_image_popup')
+
+function showReviewImagePopup(src){
+	reviewsImagePopup.classList.remove('hidden')
+	reviewsImagePopup.querySelector('img').src = src
+}
+
+reviewsImagePopup.querySelector('.reviews_image_popup_close').addEventListener('click', () => {
+	reviewsImagePopup.classList.add('hidden')
+})
+
+reviewsImagePopup.addEventListener('click', (e) => {
+	const isPopup = e.target.closest('.reviews_image_popup')
+	if (!isPopup){
+		reviewsImagePopup.classList.add('hidden')
+	}
+})

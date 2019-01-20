@@ -1,7 +1,3 @@
-<?php 
-$contact_page = get_page_by_title('contacts');
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,6 +17,10 @@ $contact_page = get_page_by_title('contacts');
 		while ( have_posts() ) : the_post(); 
 			get_template_part('templates/contacts');
 		endwhile;
+	elseif(is_page('reviews') ):
+		while ( have_posts() ) : the_post(); 
+			get_template_part('templates/reviews');
+		endwhile;
 	else : 
 		while ( have_posts() ) : the_post(); 
 	  	get_template_part('templates/detail');
@@ -28,6 +28,7 @@ $contact_page = get_page_by_title('contacts');
 	endif; 
 
 	get_template_part('templates/send-comment-popup');
+	get_template_part('templates/reviews-image-popup');
 
 	get_footer();
 	wp_footer(); 
