@@ -90,13 +90,13 @@ $reviews = get_page_by_title('reviews');
 			<div class="section">
 				<h2 class="section_title"><?= $post->post_title ?></h2>
 				<div class="section_container">
-					<a href="<?= $post->guid ?>" class="section_slider_container" id="slider_<?= $post->ID ?>">
+					<div class="section_slider_container" id="slider_<?= $post->ID ?>">
 						<div class="section_slider">
 							<?php foreach(get_field('photos') as $image) : ?>
 								<div class="section_slider_item"><img src="<?= $image['url'] ?>"></div>
 							<?php endforeach;?>
 						</div>
-					</a>
+					</div>
 					<div class="section_content">
 						<ul class="section_list">
 							<?php foreach(get_field('features') as $feature) : ?>

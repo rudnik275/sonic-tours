@@ -40,6 +40,7 @@ input, textarea, button{
 .container{
 	max-width: 1400px;
 	margin: 0 auto;
+	padding: 0 20px;
 }
 
 .header_right{
@@ -287,6 +288,7 @@ a.header_right_item{
 	min-width: 400px;
 	width: 400px;
 	position: relative;
+	align-self: flex-start;
 }
 
 .single .section_slider_container{
@@ -438,6 +440,7 @@ a.header_right_item{
 	background: #424271;
 	border-radius: 100%;
 	width: 50px;
+	min-width: 50px;
 	height: 50px;
 	background-size: 16px;
 	background-position: center;
@@ -693,6 +696,8 @@ a.header_right_item{
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-end;
+
+	@extend .clear_fix;
 }
 
 .reviews_item{
@@ -825,4 +830,143 @@ a.header_right_item{
 .wpcf7-response-output{
 	max-width: 1400px;
   margin: 10px auto;
+}
+
+@media(max-width: 1500px){
+	.single .section_slider_container{
+		max-width: 800px;
+	}
+}
+
+@media(max-width: 1200px){
+	.contacts_left{
+		width: 70%;
+	}
+
+	.contacts_right{
+		width: 30%;
+	}
+
+	.single .section_slider_container{
+		max-width: 400px;
+	}
+}
+
+@media(max-width: 960px){
+	.contacts_left{
+		width: 60%;
+	}
+
+	.contacts_right{
+		width: 40%;
+	}
+
+	.contact_form_col_left,
+	.contact_form_col_right{
+		width: 50%;
+	}
+
+	.single,
+	.main{
+		display: block;
+	}
+
+	.single_left,
+	.single_right,
+	.main_right_col,
+	.main_left_col{
+		width: 100%;	
+	}
+
+	.single .section_slider_container,
+	.section_slider_container{
+		max-width: 100%;
+		min-width: 0;
+		width: auto;
+		display: block;
+	}
+
+	.section_container{
+		display: block;
+	}
+	
+	.about_me_container{
+		margin-bottom: 40px;
+	}
+}
+
+@media(max-width: 680px){
+	.contacts_left img{
+		margin: 0;
+	}
+
+	.contacts{
+		flex-direction: column-reverse;
+	}
+
+	.contacts_left,
+	.contacts_right{
+		width: 100%;
+	}
+
+	.contact_form_col_left,
+	.contact_form_col_right{
+		width: 100%;
+	}
+
+	.contact_form_container{
+		display: block;
+	}
+
+	.header_right_item{
+		text-align: right;
+		margin-right: 0;
+		margin-top: 8px;
+	}
+
+	.header_right,
+	a.header_right_item{
+		display: block!important;
+	}
+
+	.header_dropdown{
+		right: 100%;
+		background: $black;
+	}
+
+	.header_right_item.with_list:after{
+		position: absolute;
+		right: 100%;
+		top: 0;
+		margin-right: 4px;
+		display: block;
+	}
+
+	.excursion_list_item{
+		width: 50%;
+	}
+
+	.reviews_header{
+		display: block;
+	}
+
+	.reviews_header_link{
+		display: block;
+		margin-bottom: 16px;
+	}
+
+	.add_comment_btn{
+		float: left;
+		margin-top: 8px;
+	}
+}
+
+@media(max-width: 550px){
+	.reviews_item_header{
+		display: block;
+	}
+
+	.reviews_item_ratio{
+		margin: 12px 0;
+	}
 }
