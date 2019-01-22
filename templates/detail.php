@@ -52,4 +52,4 @@ $isExcursions = $category === 'excursions';
 	</div>
 </div>
 
-<?php get_template_part('templates/contact-form', 'detail'); ?>
+<?= do_shortcode('[contact-form-7 id="130" title="Contact form 12"]') ?>

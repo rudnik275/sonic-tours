@@ -420,7 +420,7 @@ a.header_right_item{
 }
 
 .contact_form_textarea{
-	height: 146px;
+	height: 181px;
 }
 
 .contact_form_btn{
@@ -820,4 +820,9 @@ a.header_right_item{
 	&.filled{
 		background-image: url('data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDE5LjQ4MSAxOS40ODEiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDE5LjQ4MSAxOS40ODEiIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiPgogIDxnPgogICAgPHBhdGggZD0ibTEwLjIwMSwuNzU4bDIuNDc4LDUuODY1IDYuMzQ0LC41NDVjMC40NCwwLjAzOCAwLjYxOSwwLjU4NyAwLjI4NSwwLjg3NmwtNC44MTIsNC4xNjkgMS40NDIsNi4yMDJjMC4xLDAuNDMxLTAuMzY3LDAuNzctMC43NDUsMC41NDFsLTUuNDUyLTMuMjg4LTUuNDUyLDMuMjg4Yy0wLjM3OSwwLjIyOC0wLjg0NS0wLjExMS0wLjc0NS0wLjU0MWwxLjQ0Mi02LjIwMi00LjgxMy00LjE3Yy0wLjMzNC0wLjI4OS0wLjE1Ni0wLjgzOCAwLjI4NS0wLjg3Nmw2LjM0NC0uNTQ1IDIuNDc4LTUuODY0YzAuMTcyLTAuNDA4IDAuNzQ5LTAuNDA4IDAuOTIxLDB6IiBmaWxsPSIjNjk2OWIxIi8+CiAgPC9nPgo8L3N2Zz4K');
 	}
+}
+
+.wpcf7-response-output{
+	max-width: 1400px;
+  margin: 10px auto;
 }

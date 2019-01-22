@@ -125,14 +125,14 @@ $reviews = get_page_by_title('reviews');
 					</a>
 				</div>
 				<div class="about_me_socials">
-					<a href="#" class="about_me_social instagram"></a>
-					<a href="#" class="about_me_social viber"></a>
-					<a href="#" class="about_me_social telegram"></a>
-					<a href="#" class="about_me_social facebook"></a>
+					<a target="_blank" href="<?= get_field('instagram', $contacts->ID) ?>" class="about_me_social instagram"></a>
+					<a target="_blank" href="<?= get_field('viber', $contacts->ID) ?>" class="about_me_social viber"></a>
+					<a target="_blank" href="<?= get_field('telegram', $contacts->ID) ?>" class="about_me_social telegram"></a>
+					<a target="_blank" href="<?= get_field('facebook', $contacts->ID) ?>" class="about_me_social facebook"></a>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 
-<?php get_template_part('templates/contact-form', 'home'); ?>
+<?= do_shortcode('[contact-form-7 id="130" title="Contact form 12"]') ?>
